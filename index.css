@@ -1,0 +1,487 @@
+:root {
+    --main-color1: #FFCC00;
+    --main-color2: #D40511;
+    --hover: #9A0000;
+    --bg: #eee;
+    --gap: 30px;
+    --text: #111;
+}
+
+.video-container {
+    height: 50vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+video {
+    width: 100%;
+}
+
+.content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+}
+
+h1 {
+    color: white;
+    font-size: 60px;
+    font-family: "Oswald";
+}
+
+p {
+    font-family: "Oswald";
+    color: white;
+    font-size: 20px;
+}
+
+.button-1 {
+    font-family: "Oswald";
+    font-size: 15px;
+    border-radius: 6px;
+    border: none;
+    margin-top: 10px;
+    background: var(--main-color2);
+    color: white;
+    font-weight: bold;
+    transition: 0.1s ease;
+}
+
+button .a-1 {
+    text-decoration: none;
+    display: inline-block;
+    color: white;
+    padding: 10px 28px;
+}
+
+button:hover {
+    background: var(--hover)
+}
+
+main {
+    background: var(--bg);
+    padding: 0;
+}
+
+.service-section {
+    padding: 80px 0;
+    position: relative;
+}
+
+.service-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    position: relative;
+}
+
+.service-right .service-container {
+    flex-direction: row;
+}
+
+.service-left .service-container {
+    flex-direction: row-reverse;
+}
+
+.service-content {
+    flex: 1;
+    max-width: 500px;
+    position: relative;
+    z-index: 2;
+}
+
+.service-card {
+    background: white;
+    padding: 40px 50px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: 2;
+}
+
+.service-title {
+    font-family: "Oswald", sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+    line-height: 1.2;
+}
+
+.service-subtitle {
+    font-family: "Oswald", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: var(--text);
+    margin-bottom: 12px;
+}
+
+.service-border {
+    width: 50px;
+    height: 2px;
+    background: var(--text);
+    margin-bottom: 20px;
+}
+
+.service-description {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.services-heading {
+    font-family: "Oswald", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 20px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.service-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.service-item:hover {
+    background: #e9ecef;
+    transform: translateY(-1px);
+}
+
+.service-icon {
+    background: var(--main-color1);
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* flex-shrink: 0; */
+}
+
+.service-icon img {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) saturate(100%) invert(8%) sepia(94%) saturate(7151%) hue-rotate(358deg) brightness(95%) contrast(95%);
+}
+
+.service-item span {
+    font-family: "Oswald", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.3;
+}
+
+.service-button {
+    background: var(--main-color2);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 6px;
+    font-family: "Oswald", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(212, 5, 17, 0.3);
+}
+
+.service-button:hover {
+    background: var(--hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 5, 17, 0.4);
+}
+
+.service-button a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.service-image {
+    flex: 1;
+    max-width: 500px;
+    position: relative;
+    z-index: 1;
+}
+
+.service-image img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.service-right .service-image {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    max-width: 50%;
+    height: 100%;
+}
+
+.service-right .service-image img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.service-right .service-content {
+    max-width: 60%;
+    z-index: 2;
+}
+
+.service-left .service-image {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    max-width: 50%;
+    height: 100%;
+}
+
+.service-left .service-image img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.service-left .service-content {
+    max-width: 60%;
+    z-index: 2;
+    margin-left: auto;
+}
+
+.intro-bar {
+    background: linear-gradient(135deg, var(--main-color1) 0%, #FFD700 50%, var(--main-color1) 100%);
+    padding: 60px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.intro-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.intro-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.intro-text h2 {
+    font-family: "Oswald", sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.intro-text p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.intro-button {
+    font-family: "Oswald", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: var(--main-color2);
+    color: white;
+    padding: 15px 35px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(212, 5, 17, 0.3);
+}
+
+.intro-button:hover {
+    background: var(--hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 5, 17, 0.4);
+}
+
+.intro-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro-icons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    max-width: 300px;
+}
+
+.icon-item {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.icon-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.icon-item img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+    filter: brightness(0) saturate(100%) invert(8%) sepia(94%) saturate(7151%) hue-rotate(358deg) brightness(95%) contrast(95%);
+}
+
+.icon-item span {
+    font-family: "Oswald", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text);
+    display: block;
+}
+
+
+.intro-bar {
+    background: linear-gradient(135deg, var(--main-color1) 0%, #FFD700 50%, var(--main-color1) 100%);
+    padding: 60px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.intro-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.intro-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.intro-text h2 {
+    font-family: "Oswald", sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.intro-text p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.intro-button {
+    font-family: "Oswald", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: var(--main-color2);
+    color: white;
+    padding: 15px 35px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(212, 5, 17, 0.3);
+}
+
+.intro-button:hover {
+    background: var(--hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 5, 17, 0.4);
+}
+
+.intro-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro-icons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    max-width: 300px;
+}
+
+.icon-item {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.icon-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.icon-item img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+    filter: brightness(0) saturate(100%) invert(8%) sepia(94%) saturate(7151%) hue-rotate(358deg) brightness(95%) contrast(95%);
+}
+
+.icon-item span {
+    font-family: "Oswald", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text);
+    display: block;
+}

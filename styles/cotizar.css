@@ -1,0 +1,75 @@
+:root {
+    --main-color1: #FFCC00;
+    --main-color2: #D40511;
+    --bg: #eee;
+    --text: #111;
+}
+
+body.cotizar {
+    background: var(--bg);
+    font-family: 'Oswald', system-ui, sans-serif;
+    color: var(--text);
+}
+
+.info-one {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.1);
+    padding: 32px 48px;
+    max-width: 500px;
+    margin: 40px auto;
+}
+
+.titulo-tarjeta {
+    color: var(--main-color2);
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.subtitulo-tarjeta {
+    color: var(--main-color1);
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+}
+
+.border {
+    border-bottom: 2px solid var(--main-color2);
+    margin: 12px 0 24px 0;
+    width: 40%;
+}
+
+.form-cotizar label {
+    display: block;
+    margin-top: 12px;
+    font-weight: 500;
+}
+
+.form-cotizar input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-family: inherit;
+    margin-bottom: 12px;
+}
+
+.button-2 {
+    background: var(--main-color2);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 0;
+    width: 100%;
+    font-size: 1rem;
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.2s;
+}
+
+.button-2:hover {
+    background: var(--main-color1);
+    color: var(--text);
+}
