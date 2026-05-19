@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="VerbMaster — Aprende y practica los verbos más importantes del inglés con reconocimiento de voz, gamificación y retroalimentación en tiempo real.">
+    <title>VerbMaster — Aprende Verbos en Inglés</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ========== WELCOME SCREEN ========== -->
+    <section id="screen-welcome" class="screen active">
+        <div class="welcome-container">
+            <div class="welcome-logo">
+                <div class="logo-icon">
+                    <i class="ph-bold ph-translate"></i>
+                </div>
+                <h1>VerbMaster</h1>
+                <p class="tagline">Domina los 150 verbos esenciales del inglés</p>
+            </div>
+
+            <div class="welcome-features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="ph-bold ph-microphone"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h3>Responde con tu voz</h3>
+                        <p>Escucha el verbo en inglés y di su significado en español</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="ph-bold ph-timer"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h3>8 segundos por verbo</h3>
+                        <p>Pon a prueba tu velocidad y memoria</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="ph-bold ph-trophy"></i>
+                    </div>
+                    <div class="feature-text">
+                        <h3>Alcanza el nivel Experto</h3>
+                        <p>30 vidas para demostrar tu dominio del idioma</p>
+                    </div>
+                </div>
+            </div>
+
+            <button id="btn-start" class="btn-primary btn-large">
+                <i class="ph-bold ph-play"></i>
+                <span>Comenzar Partida</span>
+            </button>
+
+            <p class="browser-note">
+                <i class="ph-bold ph-info"></i>
+                Requiere Google Chrome o Microsoft Edge para reconocimiento de voz
+            </p>
+        </div>
+    </section>
+
+    <!-- ========== GAME SCREEN ========== -->
+    <section id="screen-game" class="screen">
+        <div class="game-layout">
+
+            <!-- Top Bar -->
+            <header class="game-header">
+                <div class="header-left">
+                    <div class="logo-small">
+                        <i class="ph-bold ph-translate"></i>
+                        <span>VerbMaster</span>
+                    </div>
+                </div>
+                <div class="header-center">
+                    <div class="progress-wrapper">
+                        <div class="progress-bar">
+                            <div id="progress-fill" class="progress-fill"></div>
+                        </div>
+                        <span id="progress-text" class="progress-text">0 / 150</span>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="lives-display" id="lives-display">
+                        <i class="ph-fill ph-heart"></i>
+                        <span id="lives-count">30</span>
+                    </div>
+                    <div class="score-display">
+                        <i class="ph-bold ph-star"></i>
+                        <span id="score-count">0</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Game Area -->
+            <main class="game-main">
+                <div class="game-card">
+                    <!-- Timer Ring -->
+                    <div class="timer-container">
+                        <svg class="timer-svg" viewBox="0 0 100 100">
+                            <circle class="timer-track" cx="50" cy="50" r="45"></circle>
+                            <circle id="timer-ring" class="timer-progress" cx="50" cy="50" r="45"></circle>
+                        </svg>
+                        <span id="timer-text" class="timer-text">8</span>
+                    </div>
+
+                    <!-- Verb Display -->
+                    <div class="verb-section">
+                        <span class="verb-label">Verbo en Inglés</span>
+                        <h2 id="verb-display" class="verb-word">ready</h2>
+                        <button id="btn-hear" class="btn-icon" title="Escuchar pronunciación">
+                            <i class="ph-bold ph-speaker-high"></i>
+                        </button>
+                    </div>
+
+                    <!-- Mic Section -->
+                    <div class="mic-section">
+                        <div id="mic-status" class="mic-status">
+                            <i class="ph-bold ph-microphone"></i>
+                            <span>Esperando tu respuesta...</span>
+                        </div>
+                        <div id="user-answer" class="user-answer hidden"></div>
+                    </div>
+
+                    <!-- Feedback Overlay -->
+                    <div id="feedback-overlay" class="feedback-overlay hidden">
+                        <div class="feedback-content">
+                            <div id="feedback-icon" class="feedback-icon"></div>
+                            <p id="feedback-text" class="feedback-text"></p>
+                            <p id="feedback-correct" class="feedback-correct"></p>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="action-buttons">
+                        <button id="btn-skip" class="btn-secondary" title="Saltar verbo">
+                            <i class="ph-bold ph-skip-forward"></i>
+                            <span>Saltar</span>
+                        </button>
+                        <button id="btn-mic-toggle" class="btn-mic" title="Activar micrófono">
+                            <i class="ph-bold ph-microphone"></i>
+                        </button>
+                        <button id="btn-type-toggle" class="btn-secondary" title="Escribir respuesta">
+                            <i class="ph-bold ph-keyboard"></i>
+                            <span>Escribir</span>
+                        </button>
+                    </div>
+
+                    <!-- Keyboard Input (hidden by default) -->
+                    <div id="keyboard-input" class="keyboard-input hidden">
+                        <div class="input-row">
+                            <input type="text" id="text-answer" class="text-input" placeholder="Escribe el significado en español..." autocomplete="off" autocapitalize="off">
+                            <button id="btn-submit-text" class="btn-submit">
+                                <i class="ph-bold ph-paper-plane-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- History Panel -->
+            <aside class="history-panel">
+                <div class="history-header">
+                    <h3>
+                        <i class="ph-bold ph-clock-counter-clockwise"></i>
+                        Registro de Actividad
+                    </h3>
+                    <div class="history-stats">
+                        <span class="stat-correct" id="stat-correct">
+                            <i class="ph-bold ph-check-circle"></i> 0
+                        </span>
+                        <span class="stat-wrong" id="stat-wrong">
+                            <i class="ph-bold ph-x-circle"></i> 0
+                        </span>
+                    </div>
+                </div>
+                <ul id="history-list" class="history-list">
+                    <li class="history-empty">
+                        <i class="ph-bold ph-note-blank"></i>
+                        <span>Los resultados aparecerán aquí</span>
+                    </li>
+                </ul>
+            </aside>
+        </div>
+    </section>
+
+    <!-- ========== RESULTS SCREEN ========== -->
+    <section id="screen-results" class="screen">
+        <div class="results-container">
+            <div class="results-header">
+                <div id="results-badge" class="results-badge">
+                    <i class="ph-bold ph-trophy"></i>
+                </div>
+                <h2 id="results-title">Resultados</h2>
+                <p id="results-subtitle" class="results-subtitle"></p>
+            </div>
+
+            <div class="results-stats-grid">
+                <div class="result-stat-card">
+                    <i class="ph-bold ph-check-circle"></i>
+                    <div class="stat-value" id="result-correct">0</div>
+                    <div class="stat-label">Aciertos</div>
+                </div>
+                <div class="result-stat-card">
+                    <i class="ph-bold ph-x-circle"></i>
+                    <div class="stat-value" id="result-wrong">0</div>
+                    <div class="stat-label">Errores</div>
+                </div>
+                <div class="result-stat-card">
+                    <i class="ph-bold ph-percent"></i>
+                    <div class="stat-value" id="result-accuracy">0%</div>
+                    <div class="stat-label">Precisión</div>
+                </div>
+                <div class="result-stat-card">
+                    <i class="ph-bold ph-heart"></i>
+                    <div class="stat-value" id="result-lives">0</div>
+                    <div class="stat-label">Vidas Restantes</div>
+                </div>
+            </div>
+
+            <div class="results-level-card" id="results-level-card">
+                <div class="level-badge" id="level-badge">
+                    <i id="level-icon" class="ph-bold ph-star"></i>
+                </div>
+                <div class="level-info">
+                    <span class="level-label">Tu Nivel</span>
+                    <h3 id="level-name">Principiante</h3>
+                    <p id="level-description"></p>
+                </div>
+            </div>
+
+            <div class="results-actions">
+                <button id="btn-restart" class="btn-primary btn-large">
+                    <i class="ph-bold ph-arrow-counter-clockwise"></i>
+                    <span>Jugar de Nuevo</span>
+                </button>
+                <button id="btn-review" class="btn-secondary btn-large">
+                    <i class="ph-bold ph-list-checks"></i>
+                    <span>Ver Errores</span>
+                </button>
+            </div>
+
+            <!-- Review Panel -->
+            <div id="review-panel" class="review-panel hidden">
+                <h3>
+                    <i class="ph-bold ph-warning-circle"></i>
+                    Verbos a Repasar
+                </h3>
+                <ul id="review-list" class="review-list"></ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Microphone Permission Modal -->
+    <div id="modal-mic" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-icon">
+                <i class="ph-bold ph-microphone-slash"></i>
+            </div>
+            <h3>Micrófono No Disponible</h3>
+            <p>No se pudo acceder al micrófono. Puedes usar el teclado para escribir tus respuestas.</p>
+            <button id="btn-modal-close" class="btn-primary">
+                <i class="ph-bold ph-check"></i>
+                <span>Entendido</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden">
+        <i id="toast-icon" class="ph-bold ph-info"></i>
+        <span id="toast-message"></span>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
